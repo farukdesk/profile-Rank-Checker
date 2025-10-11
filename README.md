@@ -2,6 +2,14 @@
 
 A web application that helps freelancers find their profile ranking on Upwork search results for specific keywords.
 
+## Screenshots
+
+### User Interface
+![Upwork Profile Rank Checker Interface](https://github.com/user-attachments/assets/e3d4e73c-ef75-4d19-bd34-b8cbf1619529)
+
+### Search Results
+![Search Result Example](https://github.com/user-attachments/assets/9d4ea82f-5b3b-4b4e-9577-5787c2590068)
+
 ## Features
 
 - 🔍 Search for your Upwork profile across search result pages
