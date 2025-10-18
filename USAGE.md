@@ -2,7 +2,43 @@
 
 ## Quick Start
 
-### 1. Installation
+This application is now available in two versions: **PHP/JavaScript** (recommended for web hosting) and **Python** (for local development).
+
+### Using the PHP/JavaScript Version (Web Hosting)
+
+#### 1. Installation
+
+```bash
+# Clone the repository
+git clone https://github.com/farukdesk/profile-Rank-Checker.git
+cd profile-Rank-Checker
+
+# Upload to your web server
+# - Upload index.html (or index.php)
+# - Upload profile_rank_check.php
+```
+
+#### 2. Access the Application
+
+Simply navigate to your domain in a web browser:
+```
+https://smartapplypro.com/index.html
+# or if using Apache with DirectoryIndex
+https://smartapplypro.com/
+```
+
+#### 3. Use the Web Interface
+
+1. Fill in the form:
+   - **Search Keyword**: Your design/skill keyword (e.g., "UX designer", "Python Developer")
+   - **Profile URL**: Your complete Upwork profile URL
+   - **Max Pages**: How many pages to search (1-1000, default: 100)
+2. Click "Search My Rank"
+3. Wait for the results (may take a few minutes depending on the number of pages)
+
+### Using the Python Version (Local Development)
+
+#### 1. Installation
 
 ```bash
 # Clone the repository
@@ -13,7 +49,7 @@ cd profile-Rank-Checker
 pip install -r requirements.txt
 ```
 
-### 2. Run the Application
+#### 2. Run the Application
 
 ```bash
 # Start the Flask server
@@ -22,15 +58,10 @@ python app.py
 
 The application will start on `http://localhost:5000`
 
-### 3. Use the Web Interface
+#### 3. Use the Web Interface
 
 1. Open your browser and navigate to `http://localhost:5000`
-2. Fill in the form:
-   - **Search Keyword**: Your design/skill keyword (e.g., "UX designer", "Python Developer")
-   - **Profile URL**: Your complete Upwork profile URL
-   - **Max Pages**: How many pages to search (1-1000, default: 100)
-3. Click "Search My Rank"
-4. Wait for the results (may take a few minutes depending on the number of pages)
+2. Follow the same steps as the PHP version above
 
 ## Understanding Your Results
 
@@ -109,6 +140,37 @@ www.upwork.com/fl/johndoe
 4. **Rate Limiting**: Includes a 1-second delay between requests to avoid overloading Upwork's servers
 
 ## Troubleshooting
+
+### PHP Version Issues
+
+### Issue: "Call to undefined function curl_init()"
+**Solution**: Enable PHP cURL extension
+```bash
+# On Ubuntu/Debian
+sudo apt-get install php-curl
+sudo systemctl restart apache2
+
+# On CentOS/RHEL
+sudo yum install php-curl
+sudo systemctl restart httpd
+```
+
+### Issue: 500 Internal Server Error
+**Solution**: Check PHP error logs and ensure proper permissions
+```bash
+# Check PHP error log
+tail -f /var/log/apache2/error.log
+# or
+tail -f /var/log/php-fpm/error.log
+
+# Set proper permissions
+chmod 644 profile_rank_check.php index.html
+```
+
+### Issue: CORS errors in browser console
+**Solution**: The PHP script includes CORS headers. If still having issues, check server configuration.
+
+### Python Version Issues
 
 ### Issue: "Module not found" error
 **Solution**: Install dependencies

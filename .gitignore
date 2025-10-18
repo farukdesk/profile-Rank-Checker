@@ -47,3 +47,10 @@ instance/
 
 # Logs
 *.log
+
+# PHP
+*.php~
+.phpunit.result.cache
+composer.phar
+composer.lock
+vendor/
