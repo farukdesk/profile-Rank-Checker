@@ -2,6 +2,8 @@
 
 A web application that helps freelancers find their profile ranking on Upwork search results for specific keywords.
 
+**New PHP/JavaScript Version**: This project now includes a PHP/JavaScript implementation alongside the original Python version, making it easy to deploy on standard web hosting platforms like Apache/Nginx with PHP support.
+
 ## Screenshots
 
 ### User Interface
@@ -27,12 +29,51 @@ A web application that helps freelancers find their profile ranking on Upwork se
 
 ## Installation
 
-### Prerequisites
+You can use either the **PHP/JavaScript version** (recommended for web hosting) or the **Python version** (for local development).
 
+### Option 1: PHP/JavaScript Version (Recommended for Web Hosting)
+
+#### Prerequisites
+- PHP 7.4 or higher with cURL extension enabled
+- Web server (Apache, Nginx, or any PHP-compatible server)
+
+#### Setup
+
+1. Clone the repository:
+```bash
+git clone https://github.com/farukdesk/profile-Rank-Checker.git
+cd profile-Rank-Checker
+```
+
+2. Upload files to your web server:
+   - Upload `index.html` (or `index.php`) to your web root
+   - Upload `profile_rank_check.php` to the same directory
+
+3. Ensure PHP cURL extension is enabled:
+```bash
+# Check if cURL is enabled
+php -m | grep curl
+```
+
+4. Set proper permissions:
+```bash
+chmod 644 index.html profile_rank_check.php
+```
+
+5. Access via your domain:
+```
+https://smartapplypro.com/profile_rank_check.php
+# or
+https://smartapplypro.com/index.html
+```
+
+### Option 2: Python Version (For Local Development)
+
+#### Prerequisites
 - Python 3.7 or higher
 - pip (Python package installer)
 
-### Setup
+#### Setup
 
 1. Clone the repository:
 ```bash
@@ -45,14 +86,12 @@ cd profile-Rank-Checker
 pip install -r requirements.txt
 ```
 
-## Usage
-
-1. Start the application:
+3. Start the application:
 ```bash
 python app.py
 ```
 
-2. Open your browser and navigate to:
+4. Open your browser and navigate to:
 ```
 http://localhost:5000
 ```
@@ -93,6 +132,12 @@ http://localhost:5000
 
 ### Built With
 
+**PHP/JavaScript Version**:
+- **Backend**: PHP with cURL
+- **Frontend**: HTML, CSS, JavaScript (Vanilla JS)
+- **Web Scraping**: PHP cURL and string search
+
+**Python Version** (Legacy):
 - **Backend**: Python Flask
 - **Frontend**: HTML, CSS, JavaScript
 - **Web Scraping**: BeautifulSoup4, Requests
@@ -100,11 +145,19 @@ http://localhost:5000
 
 ### How It Works
 
-1. The app extracts your profile ID from the URL
+1. The app extracts your profile ID from the URL using regex
 2. It constructs Upwork search URLs with the provided keyword
 3. It iterates through search result pages (starting from page 1)
-4. For each page, it parses the HTML and looks for links containing your profile ID
+4. For each page, it fetches the HTML and looks for your profile ID
 5. When found, it calculates and returns your approximate position
+
+### Key Features of PHP Version
+
+- **No dependencies**: Pure PHP with built-in cURL
+- **Easy deployment**: Works on any PHP hosting (Apache, Nginx, etc.)
+- **Cross-origin compatible**: Includes CORS headers for flexibility
+- **Rate limiting**: Built-in 1-second delay between requests
+- **Error handling**: Comprehensive error logging and user feedback
 
 ## Troubleshooting
 
